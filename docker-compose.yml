@@ -1,0 +1,12 @@
+version: "3"
+services:
+  db:
+    image: mysql:5.7
+    environment: 
+      - MYSQL_ROOT_PASSWORD=go_api_exemplo
+      - MYSQL_DATABASE=go_api_exemplo
+      - MYSQL_USER=go_api_exemplo
+      - MYSQL_PASSWORD=go_api_exemplo
+
+    ports: 
+      - 3306:3306
