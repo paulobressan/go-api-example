@@ -31,18 +31,21 @@ func (r *Response) getResponsePattern(self string, values interface{}) response 
 
 // Ok : Requisição feita com sucesso
 func (r *Response) Ok(values interface{}) {
+	r.W.Header().Set("Content-Type", "application/json")
 	r.W.WriteHeader(200)
 	json.NewEncoder(r.W).Encode(r.getResponsePattern(r.R.RequestURI, values))
 }
 
 // BadRequest : Requisição mal formatada
 func (r *Response) BadRequest(message string) {
+	r.W.Header().Set("Content-Type", "application/json")
 	r.W.WriteHeader(404)
 	json.NewEncoder(r.W).Encode(message)
 }
 
 // NotFound : Requisição não encontrada ou item não encontrado
 func (r *Response) NotFound(message string) {
+	r.W.Header().Set("Content-Type", "application/json")
 	r.W.WriteHeader(400)
 	json.NewEncoder(r.W).Encode(message)
 }
